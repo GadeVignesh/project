@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -9,7 +9,7 @@ import Contact from './components/Contact';
 import Navigation from './components/Navigation';
 import ThemeToggle from './components/ThemeToggle';
 import ScrollProgress from './components/ScrollProgress';
-import { Sun, Moon } from 'lucide-react';
+import Footer from './components/Footer';  // <-- Import Footer here
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -44,8 +44,8 @@ function App() {
   }
 
   return (
-    <div className={`${darkMode ? 'dark' : ''} transition-all duration-500`}>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 transition-all duration-500">
+    <div className={`${darkMode ? 'dark' : ''} transition-all duration-500 min-h-screen flex flex-col`}>
+      <div className="flex-grow bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 transition-all duration-500">
         <ScrollProgress />
         <Navigation darkMode={darkMode} />
         <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
@@ -59,6 +59,8 @@ function App() {
           <Contact darkMode={darkMode} />
         </main>
       </div>
+
+      <Footer />  {/* Footer added here */}
     </div>
   );
 }
