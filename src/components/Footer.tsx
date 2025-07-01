@@ -6,7 +6,6 @@ const Footer: React.FC = () => {
   return (
     <footer className="mt-20 bg-white/10 dark:bg-gray-800/20 backdrop-blur-md border-t border-white/20 dark:border-gray-700/30">
       <div className="max-w-7xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-        {/* Branding & Copyright */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -17,7 +16,6 @@ const Footer: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Social Links */}
         <motion.div
           className="flex gap-6"
           initial={{ opacity: 0, y: 10 }}
