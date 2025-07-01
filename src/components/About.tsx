@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Box, Text } from '@react-three/drei';
 import { motion, useInView } from 'framer-motion';
-import { GraduationCap, Brain, Code, Download } from 'lucide-react';
+import { GraduationCap, Brain, Code } from 'lucide-react';
 
 function RotatingCube() {
   const meshRef = useRef<any>();
@@ -89,24 +88,6 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               description="Building intelligent systems and web applications"
               subtitle="Exploring the intersection of AI and practical solutions"
             />
-
-            <motion.button
-              className="group flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-6 py-3 rounded-full hover:from-cyan-600 hover:to-purple-700 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                // Create and download a sample resume
-                const link = document.createElement('a');
-                link.href = '#';
-                link.download = 'Gade_Vignesh_Resume.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
-            >
-              <Download size={20} />
-              <span>Download Resume</span>
-            </motion.button>
           </motion.div>
         </div>
       </div>
