@@ -1,53 +1,80 @@
 import React from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  darkMode: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ darkMode }) => {
   return (
-    <footer className="mt-20 bg-white/10 dark:bg-gray-800/20 backdrop-blur-md border-t border-white/20 dark:border-gray-700/30">
-      <div className="max-w-7xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-gray-700 dark:text-gray-300 text-sm">
-            © {new Date().getFullYear()} Gade Vignesh. All rights reserved.
-          </p>
-        </motion.div>
+    <footer
+      className={`py-8 px-4 bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-t border-gray-300 dark:border-gray-700`}
+    >
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+        {/* Left Section - Copyright */}
+        <div className="text-sm">
+          &copy; {new Date().getFullYear()} Vignesh Gade. All rights reserved.
+        </div>
 
-        <motion.div
-          className="flex gap-6"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        {/* Center Section - Quick Links */}
+        <nav className="flex space-x-6 text-sm font-medium">
+          <a
+            href="#about"
+            className="hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
+          >
+            About
+          </a>
+          <a
+            href="#projects"
+            className="hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
+          >
+            Projects
+          </a>
+          <a
+            href="#contact"
+            className="hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
+          >
+            Contact
+          </a>
+        </nav>
+
+        {/* Right Section - Social Icons */}
+        <div className="flex space-x-6">
           <a
             href="https://github.com/vigneshgade"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-cyan-500 transition-colors"
             aria-label="GitHub"
+            className="hover:text-gray-900 dark:hover:text-white transition-colors"
           >
-            <Github className="w-5 h-5" />
+            <Github size={24} />
           </a>
           <a
             href="https://linkedin.com/in/vigneshgade"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-cyan-500 transition-colors"
             aria-label="LinkedIn"
+            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
-            <Linkedin className="w-5 h-5" />
+            <Linkedin size={24} />
+          </a>
+          <a
+            href="https://twitter.com/vigneshgade"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter"
+            className="hover:text-blue-400 dark:hover:text-blue-300 transition-colors"
+          >
+            <Twitter size={24} />
           </a>
           <a
             href="mailto:vigneshgade769@gmail.com"
-            className="text-gray-600 dark:text-gray-300 hover:text-cyan-500 transition-colors"
             aria-label="Email"
+            className="hover:text-red-500 dark:hover:text-red-400 transition-colors"
           >
-            <Mail className="w-5 h-5" />
+            <Mail size={24} />
           </a>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

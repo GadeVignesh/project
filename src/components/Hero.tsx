@@ -1,8 +1,8 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial, Sphere } from '@react-three/drei';
+import { Points, PointMaterial } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import * as random from 'maath/random/dist/maath-random.esm';
 
 function Stars(props: any) {
@@ -53,6 +53,48 @@ function FloatingCube() {
   );
 }
 
+const TypewriterText = () => {
+  const roles = ['AI Engineer', 'Gen AI Specialist', 'Python Developer', 'Web Developer'];
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [blink, setBlink] = useState(true);
+  const [reverse, setReverse] = useState(false);
+
+  useEffect(() => {
+    if (index === roles.length) return;
+
+    if (subIndex === roles[index].length + 1 && !reverse) {
+      setTimeout(() => setReverse(true), 1000);
+      return;
+    }
+
+    if (subIndex === 0 && reverse) {
+      setReverse(false);
+      setIndex((prev) => (prev + 1) % roles.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (reverse ? -1 : 1));
+    }, reverse ? 50 : 100);
+
+    return () => clearTimeout(timeout);
+  }, [subIndex, index, reverse]);
+
+  useEffect(() => {
+    const blinkInterval = setInterval(() => {
+      setBlink((prev) => !prev);
+    }, 500);
+    return () => clearInterval(blinkInterval);
+  }, []);
+
+  return (
+    <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-2">
+      {`${roles[index].substring(0, subIndex)}${blink ? '|' : ' '}`}
+    </p>
+  );
+};
+
 interface HeroProps {
   darkMode: boolean;
 }
@@ -86,16 +128,9 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
           >
             Gade Vignesh
           </motion.h1>
-          
-          <motion.p 
-            className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            AI & ML Enthusiast
-          </motion.p>
-          
+
+          <TypewriterText />
+
           <motion.p 
             className="text-lg md:text-xl text-gray-600 dark:text-gray-400"
             initial={{ opacity: 0 }}
@@ -134,23 +169,6 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             transition={{ duration: 0.3 }}
           />
         </motion.button>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.5 }}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-gray-600 dark:text-gray-400"
-          >
-            <span className="text-sm mb-2">Scroll Down</span>
-            <ArrowDown size={20} />
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );
