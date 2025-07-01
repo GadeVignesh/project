@@ -38,7 +38,6 @@ function SkillsVisualization() {
     { name: 'Python', position: [-2, 1, 0], color: '#3776ab' },
     { name: 'Java', position: [2, 1, 0], color: '#f89820' },
     { name: 'ReactJS', position: [-1, 0, 1], color: '#61dafb' },
-    { name: 'Flask', position: [1, 0, 1], color: '#000000' },
     { name: 'MySQL', position: [-1.5, -0.5, -1], color: '#4479a1' },
     { name: 'MongoDB', position: [1.5, -0.5, -1], color: '#4db33d' },
     { name: 'Git', position: [0, 1.5, -0.5], color: '#f05032' },
@@ -73,19 +72,19 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
     {
       icon: <Code className="w-8 h-8" />,
       title: "Languages & Scripting",
-      skills: ["Python", "Java", "C", "HTML", "CSS", "JavaScript"],
+      skills: ["Python", "Java", "HTML", "CSS", "JavaScript"],
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: <Wrench className="w-8 h-8" />,
       title: "Web & Frameworks",
-      skills: ["ReactJS", "Flask", "Streamlit", "Bootstrap", "Angular"],
+      skills: ["ReactJS", "Flask", "Streamlit"],
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: <Brain className="w-8 h-8" />,
       title: "AI/ML & Tools",
-      skills: ["Artificial Intelligence", "Machine Learning", "Deep Learning", "NLP", "Generative AI", "OpenCV", "MediaPipe", "Transformers"],
+      skills: ["Artificial Intelligence", "Machine Learning", "Deep Learning", "NLP", "Generative AI"],
       color: "from-orange-500 to-red-500"
     },
     {
